@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class AuthManager extends Controller
 {
@@ -24,7 +24,7 @@ class AuthManager extends Controller
         if (Auth::attempt($credentials, $request->has('remember'))) {
             // Xác thực thông tin đăng nhập thành công
 
-            return redirect()->intended('/students');
+            return redirect()->intended('/workers');
         }
 
         // Xác thực thông tin đăng nhập không thành công
@@ -51,7 +51,7 @@ class AuthManager extends Controller
 
         Auth::login($user);
 
-        return redirect()->intended('/students');
+        return redirect()->intended('/sign-in');
     }
 
     function handleSignOut(Request $request){
