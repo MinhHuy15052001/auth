@@ -15,35 +15,34 @@
         <div class="row">
             <div class="col col-md-6"><b>Student Data</b></div>
             <div class="col col-md-6">
-                <a href="{{ route('students.create') }}" class="btn btn-success btn-sm float-end">Add</a>
-                <a href="{{ route('handleSignOut') }}" class="btn btn-success btn-sm float-end">Logout</a>
+                <a href="{{ route('workers.create') }}" class="btn btn-success btn-sm float-end">Add</a>
+                <a href="" class="btn btn-success btn-sm float-end">Logout</a>
             </div>
         </div>
     </div>
     <div class="card-body">
         <table class="table table-bordered">
             <tr>
-                <th>Image</th>
                 <th>Name</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Action</th>
+                <th>Postision</th>
+                <th>Salary</th>
+                <th>Work at</th>
             </tr>
             @if(count($data) > 0)
 
                 @foreach($data as $row)
 
                     <tr>
-                        <td><img src="{{ asset('images/' . $row->student_image) }}" width="75" /></td>
-                        <td>{{ $row->student_name }}</td>
-                        <td>{{ $row->student_email }}</td>
-                        <td>{{ $row->student_gender }}</td>
+                        <td>{{ $row->name }}</td>
+                        <td>{{ $row->potision }}</td>
+                        <td>{{ $row->salary }}</td>
+                        <td>{{ $row->work_at }}</td>
                         <td>
-                            <form method="post" action="{{ route('students.destroy', $row->id) }}">
+                            <form method="post" action="{{ route('workers.destroy', $row->id) }}">
                                 @csrf
                                 @method('DELETE')
-                                <a href="{{ route('students.show', $row->id) }}" class="btn btn-primary btn-sm">View</a>
-                                <a href="{{ route('students.edit', $row->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="{{ route('workers.show', $row->id) }}" class="btn btn-primary btn-sm">View</a>
+                                <a href="{{ route('workers.edit', $row->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                 <input type="submit" class="btn btn-danger btn-sm" value="Delete" />
                             </form>
 

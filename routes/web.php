@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AuthManager;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\WorkerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +27,9 @@ Route::post('/sign-up',[AuthManager::class,'handleSignUp'] )->name('handleSignUp
 Route::get('/sign-out',[AuthManager::class,'handleSignOut'] )->name('handleSignOut');
 
 
-Route::resource('students', StudentController::class)->middleware('admin');
+
+Route::resource('workers',WorkerController::class);
+
 Route::resource('students', StudentController::class)->only(['index','show'])->middleware('auth');
-
-
+Route::resource('students', StudentController::class)->except(['index','show'])->middleware('admin');
 
